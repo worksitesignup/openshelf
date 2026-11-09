@@ -1,0 +1,12 @@
+#!/bin/sh
+# Start Open Shelf from inside the AppImage.
+here="$(dirname "$(readlink -f "$0")")"
+
+# Qt WebEngine's sandbox needs unprivileged user namespaces, which some distributions
+# restrict for apps like this one. Without them it can't start at all, so fall back to
+# running unsandboxed. Book content is still sanitized and cut off from the network.
+if ! unshare --user --map-root-user true 2>/dev/null; then
+    export QTWEBENGINE_DISABLE_SANDBOX=1
+fi
+
+exec "$here/usr/lib/openshelf/OpenShelf" "$@"

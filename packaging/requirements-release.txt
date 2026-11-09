@@ -1,0 +1,3 @@
+# Exact versions for release builds, matching the versions the app was tested with.
+PySide6==6.12.0
+pyinstaller==6.22.3

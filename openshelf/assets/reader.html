@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src osbook:; style-src 'unsafe-inline' osbook:; img-src osbook: data:">
+<link rel="stylesheet" href="osbook:/app/reader.css">
+<style id="os-bookcss"></style>
+</head>
+<body>
+<div id="os-viewport">
+  <div id="os-book"></div>
+  <div id="os-endnav"><button id="os-prevch">Previous chapter</button><button id="os-nextch">Next chapter</button></div>
+</div>
+<div id="os-pop" hidden>
+  <button class="os-dot" data-color="yellow" aria-label="Yellow highlight"></button>
+  <button class="os-dot" data-color="green" aria-label="Green highlight"></button>
+  <button class="os-dot" data-color="blue" aria-label="Blue highlight"></button>
+  <button class="os-dot" data-color="pink" aria-label="Pink highlight"></button>
+  <span class="os-sep"></span>
+  <button id="os-note">Note</button>
+  <button id="os-copy">Copy</button>
+  <button id="os-del" hidden>Remove</button>
+</div>
+<script src="osbook:/app/qwebchannel.js"></script>
+<script src="osbook:/app/reader.js"></script>
+</body>
+</html>

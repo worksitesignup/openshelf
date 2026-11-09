@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openshelf"
+version = "0.1.0"
+description = "A free desktop reader for books and audiobooks from the Internet Archive"
+readme = "README.md"
+license = { text = "GPL-3.0-only" }
+requires-python = ">=3.10"
+dependencies = ["PySide6>=6.9"]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6.16"]
+
+[project.gui-scripts]
+openshelf = "openshelf.__main__:main"
+
+[tool.setuptools]
+packages = ["openshelf"]
+
+[tool.setuptools.package-data]
+openshelf = ["assets/*"]

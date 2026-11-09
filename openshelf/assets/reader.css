@@ -1,0 +1,58 @@
+:root {
+  --bg: #fff; --fg: #1c1c1e; --link: #0f766e; --muted: #77777c; --line: #e8e8e4;
+  --fs: 19px; --lh: 1.55; --font: serif; --align: left; --page-h: 80vh;
+}
+* { -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; height: 100%; background: var(--bg); overflow: hidden; }
+#os-viewport { position: fixed; overflow: hidden; }
+#os-book {
+  font-family: var(--font); font-size: var(--fs); line-height: var(--lh); color: var(--fg);
+  text-align: var(--align); hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word;
+  column-fill: auto; visibility: hidden;
+}
+#os-book * { color: inherit !important; background-color: transparent !important; line-height: inherit; font-family: inherit; max-width: 100%; box-sizing: border-box; }
+#os-book code, #os-book pre, #os-book tt { font-family: monospace; }
+#os-book pre { white-space: pre-wrap; }
+#os-book p { orphans: 2; widows: 2; margin: 0 0 .75em; }
+#os-book h1, #os-book h2, #os-book h3, #os-book h4 { line-height: 1.25; break-after: avoid; font-weight: 600; margin: 1em 0 .6em; hyphens: none; }
+#os-book h1 { font-size: 1.6em; } #os-book h2 { font-size: 1.35em; } #os-book h3 { font-size: 1.15em; }
+#os-book img { max-width: 100%; max-height: calc(var(--page-h) - 12px); width: auto; height: auto; object-fit: contain; break-inside: avoid; }
+#os-book table { border-collapse: collapse; }
+#os-book a[href] { color: var(--link) !important; text-decoration: none; }
+#os-book blockquote { margin: 0 0 .75em 1.3em; }
+#os-book mark { color: inherit !important; border-radius: 2px; cursor: pointer; }
+#os-book mark.os-yellow { background-color: rgba(250, 204, 21, .42) !important; }
+#os-book mark.os-green { background-color: rgba(74, 222, 128, .38) !important; }
+#os-book mark.os-blue { background-color: rgba(96, 165, 250, .38) !important; }
+#os-book mark.os-pink { background-color: rgba(244, 114, 182, .36) !important; }
+#os-book mark.os-find { background-color: rgba(45, 212, 191, .55) !important; }
+#os-book mark.os-noted { border-bottom: 2px dotted currentColor; }
+#os-endnav { display: none; justify-content: space-between; padding: 26px 0 60px; }
+#os-endnav button { font: 14px sans-serif; color: var(--link); background: none; border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+#os-pop {
+  position: fixed; display: flex; align-items: center; gap: 6px; z-index: 10; padding: 6px 8px;
+  background: #2c2c2f; border-radius: 10px; box-shadow: 0 4px 18px rgba(0,0,0,.28);
+  font: 13px sans-serif;
+}
+#os-pop[hidden] { display: none; }
+#os-pop button { background: none; border: none; color: #f2f2f3; cursor: pointer; padding: 3px 7px; border-radius: 6px; font: inherit; }
+#os-pop button:hover { background: rgba(255,255,255,.14); }
+#os-pop button[hidden] { display: none; }
+#os-pop .os-dot { width: 20px; height: 20px; padding: 0; border-radius: 50%; border: 2px solid transparent; }
+#os-pop .os-dot:hover { border-color: #fff; background-clip: padding-box; }
+#os-pop .os-dot[data-color=yellow] { background-color: #facc15; }
+#os-pop .os-dot[data-color=green] { background-color: #4ade80; }
+#os-pop .os-dot[data-color=blue] { background-color: #60a5fa; }
+#os-pop .os-dot[data-color=pink] { background-color: #f472b6; }
+#os-pop .os-sep { width: 1px; height: 16px; background: rgba(255,255,255,.25); }
+::selection { background: rgba(45, 212, 191, .4); }
+
+@keyframes os-out-left { to { transform: translateX(-100%); } }
+@keyframes os-in-right { from { transform: translateX(100%); } }
+@keyframes os-out-right { to { transform: translateX(100%); } }
+@keyframes os-in-left { from { transform: translateX(-100%); } }
+::view-transition-group(root) { animation: none; }
+html[data-turn=next]::view-transition-old(root) { animation: os-out-left .24s cubic-bezier(.25,.8,.3,1) both; }
+html[data-turn=next]::view-transition-new(root) { animation: os-in-right .24s cubic-bezier(.25,.8,.3,1) both; }
+html[data-turn=prev]::view-transition-old(root) { animation: os-out-right .24s cubic-bezier(.25,.8,.3,1) both; }
+html[data-turn=prev]::view-transition-new(root) { animation: os-in-left .24s cubic-bezier(.25,.8,.3,1) both; }
